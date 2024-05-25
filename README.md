@@ -93,14 +93,14 @@ V2's locks have a much more fine granularity, as each individual (of the 4096) h
 
 Test runs using 
 
-1. ./hash-table-tester -t 4 -s 50000 | Avg time improvement over base:
+1. ./hash-table-tester -t 4 -s 50000 | Avg time improvement over base: 3.01x
 
-Generation: 34,568 usec
-Hash table base: 224,447 usec
+Generation: 34,474 usec
+Hash table base: 203,232 usec
   - 0 missing
-Hash table v1: 575,395 usec
+Hash table v1: 529,009 usec
   - 0 missing
-Hash table v2: 78,805 usec
+Hash table v2: 66,885 usec
   - 0 missing
 
 Hash table base: 239,314 usec
@@ -117,9 +117,32 @@ Hash table v1: 502,346 usec
 Hash table v2: 68,088 usec
   - 0 missing
 
+2. ./hash-table-tester -t 3 -s 50000 | Avg time improvement over base: 2.23x
+
+Hash table base: 108,748 usec
+  - 0 missing
+Hash table v1: 302,076 usec
+  - 0 missing
+Hash table v2: 49,801 usec
+
+Hash table base: 111,357 usec
+  - 0 missing
+Hash table v1: 303,341 usec
+  - 0 missing
+Hash table v2: 49,426 usec
+  - 0 missing
+
+Hash table base: 113,420 usec
+  - 0 missing
+Hash table v1: 294,505 usec
+  - 0 missing
+Hash table v2: 50,412 usec
+  - 0 missing
+
 ## Cleaning up
+Cleaning up temp files:
 ```shell
-make clean
+make clean 
 ```
 
 In order to clean up locks, in V1 and V2, pthread_mutex_destroy was used either before the loop (V1) or during the loop that cleans up the individual hash_table_entry s (V2).
